@@ -28,15 +28,13 @@ Click on the addpermission.
 
 click on the import the management policy
 
-![per](https://github.com/malli2221/ops/blob/master/images/inline2 2018-07-05 12-20-14.png)
-
-select the polices)
+![per](https://github.com/malli2221/ops/blob/master/images/inline2%202018-07-05%2012-20-14.png)
 
 ![police](https://github.com/malli2221/ops/blob/master/images/inline3%202018-07-05%2012-27-54.png)
 
 attach the polici to user
 
-![attach]( [https://github.com/malli2221/ops/blob/master/images/inline5%202018-07-05%2013-13-46.png](https://github.com/malli2221/ops/blob/master/images/inline5%202018-07-05%2013-13-46.png))
+![attach(https://github.com/malli2221/ops/blob/master/images/inline5%202018-07-05%2013-13-46.png)
 
 
 
@@ -44,13 +42,13 @@ Create Roles :  go to iam section there we need to  select the role, click on th
 
 Create roles:
 
-![role]( [https://github.com/malli2221/ops/blob/master/images/create%20role2018-07-05%2015-54-16.png](https://github.com/malli2221/ops/blob/master/images/create%20role2018-07-05%2015-54-16.png))
+![role](https://github.com/malli2221/ops/blob/master/images/role1%202018-07-05%2015-18-18.png)
 
-![role1]( [https://github.com/malli2221/ops/blob/master/images/role4%202018-07-05%2015-19-30.png](https://github.com/malli2221/ops/blob/master/images/role4%202018-07-05%2015-19-30.png))
+![role1]( [https://github.com/malli2221/ops/blob/master/images/role3%202018-07-05%2015-19-04.png](https://github.com/malli2221/ops/blob/master/images/role3%202018-07-05%2015-19-04.png))
 
-![role]( [https://github.com/malli2221/ops/blob/master/images/role52018-07-05%2015-42-53.png](https://github.com/malli2221/ops/blob/master/images/role52018-07-05%2015-42-53.png))
+when ec2 instace launching time we need to select this, it communitcate to other aws server.
 
-
+![role2](https://github.com/malli2221/ops/blob/master/images/role52018-07-05%2015-42-53.png)
 
 
 
@@ -67,6 +65,8 @@ Create Vpc:
 Vpc-&gt; create new vpc here we have to give the name and ipv4 details then click on the create vpc button.
 
 ![vpc](https://github.com/malli2221/ops/blob/master/images/vpc1%202018-07-05%2016-01-42.png)
+
+
 
 Create subnets :
 
@@ -97,5 +97,7 @@ go to security group-&gt; create security group
 here give nametag , group name, description and vpc once given this click create.
 
 ![secu](https://github.com/malli2221/ops/blob/master/images/vpc-secuirty2018-07-05%2016-36-35.png)
+
+
 
 Once done this things we will create one keypair public key. Using that key we will create the one ec2 instance on that we have select the our own vpc.
