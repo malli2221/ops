@@ -34,7 +34,7 @@ click on the import the management policy
 
 attach the polici to user
 
-![attach(https://github.com/malli2221/ops/blob/master/images/inline5%202018-07-05%2013-13-46.png)
+![attach](https://github.com/malli2221/ops/blob/master/images/inline5%202018-07-05%2013-13-46.png)
 
 
 
@@ -44,7 +44,7 @@ Create roles:
 
 ![role](https://github.com/malli2221/ops/blob/master/images/role1%202018-07-05%2015-18-18.png)
 
-![role1]( [https://github.com/malli2221/ops/blob/master/images/role3%202018-07-05%2015-19-04.png](https://github.com/malli2221/ops/blob/master/images/role3%202018-07-05%2015-19-04.png))
+![role1](https://github.com/malli2221/ops/blob/master/images/role3%202018-07-05%2015-19-04.png)
 
 when ec2 instace launching time we need to select this, it communitcate to other aws server.
 
