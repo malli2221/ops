@@ -24,15 +24,15 @@ there we need to config the service, actions, resources, request conditions.
 
 Click on the addpermission.
 
-![permission]( [https://github.com/malli2221/ops/blob/master/images/inline1%202018-07-05%2012-19-48.png](https://github.com/malli2221/ops/blob/master/images/inline1%202018-07-05%2012-19-48.png))
+![permission](https://github.com/malli2221/ops/blob/master/images/inline1%202018-07-05%2012-19-48.png)
 
 click on the import the management policy
 
 ![per](https://github.com/malli2221/ops/blob/master/images/inline2 2018-07-05 12-20-14.png)
 
-select the polices
+select the polices)
 
-![police]( [https://github.com/malli2221/ops/blob/master/images/inline3%202018-07-05%2012-20-39.png](https://github.com/malli2221/ops/blob/master/images/inline3%202018-07-05%2012-20-39.png))
+![police](https://github.com/malli2221/ops/blob/master/images/inline3%202018-07-05%2012-27-54.png)
 
 attach the polici to user
 
@@ -66,7 +66,7 @@ Create Vpc:
 
 Vpc-&gt; create new vpc here we have to give the name and ipv4 details then click on the create vpc button.
 
-![vpc]( [https://github.com/malli2221/ops/blob/master/images/vpc1%202018-07-05%2016-01-42.png](https://github.com/malli2221/ops/blob/master/images/vpc1%202018-07-05%2016-01-42.png))
+![vpc](https://github.com/malli2221/ops/blob/master/images/vpc1%202018-07-05%2016-01-42.png)
 
 Create subnets :
 
@@ -96,6 +96,6 @@ go to security group-&gt; create security group
 
 here give nametag , group name, description and vpc once given this click create.
 
-![secu]( [https://github.com/malli2221/ops/blob/master/images/vpc-secuirty2018-07-05%2016-36-35.png](https://github.com/malli2221/ops/blob/master/images/vpc-secuirty2018-07-05%2016-36-35.png))
+![secu](https://github.com/malli2221/ops/blob/master/images/vpc-secuirty2018-07-05%2016-36-35.png)
 
 Once done this things we will create one keypair public key. Using that key we will create the one ec2 instance on that we have select the our own vpc.
