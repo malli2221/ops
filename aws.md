@@ -1,5 +1,17 @@
 Aws tasks:
 
+Elb (elastic block storage):
+
+we have a server in our aws, we need to increase the server storage for this first go to volume section here create one new volume , that volume add to our aws server this the way to add extra volume to our present server.
+
+![vol1](https://github.com/malli2221/ops/blob/master/images/vol1%202018-07-05%2018-10-23.png)
+
+![vol2](https://github.com/malli2221/ops/blob/master/images/vol2%202018-07-05%2018-10-52.png)
+
+![elb1](https://github.com/malli2221/ops/blob/master/images/elb1%202018-07-05%2019-04-50.png)
+
+![elb2](https://github.com/malli2221/ops/blob/master/images/elb2%202018-07-05%2019-05-08.png)
+
 create iam user:
 
 go to iam section -&gt; there select the user -&gt; next select the Adduser -&gt;
@@ -101,3 +113,7 @@ here give nametag , group name, description and vpc once given this click create
 
 
 Once done this things we will create one keypair public key. Using that key we will create the one ec2 instance on that we have select the our own vpc.
+
+Ebs : (elastic block storage)
+
+we have a one aws server in case we need to create the size to that server means we will use the ebs add extra volume to that server.
