@@ -37,3 +37,13 @@ Go to nat gateway-&gt; create the nat gateway.
 Once we are crating the nat gateway associate to routing table then only communicate to privaten vpc server.
 
 ![nat](https://github.com/malli2221/ops/blob/master/images1/natgateway%202018-07-06%2018-57-24.png)
+
+vpcpeering :  why we are using this vpe peering means we have created two vpc in our aws then in that vpc we are creating two server in two vpc, so it wont communicate each other so for that we are
+
+creating vpc peering than after that this vpc perring add to paticular server routing tables then it will communicate to eath other.
+
+
+
+![peering](https://github.com/malli2221/ops/blob/master/images1/peering%202018-07-06%2018-41-31.png)
+
+![peering](https://github.com/malli2221/ops/blob/master/images1/peering2018-07-06%2018-42-27.png)
