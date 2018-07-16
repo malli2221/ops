@@ -1,122 +1,231 @@
-Jenkins:
+1.setup email notification.
 
-1.Run jenkins war on the top of a tomcat server.
+For this first we download the emailnotifacation plugin, once download that goto manage jenkins and goto system configure here we configure the settings give smtp server and smtp port number and given mail and test the connection.before that goto gmail account and goto sign&amp;scutiry here we enable the smtp notification once enabled this, goto jenkins check the connection once it done.
 
- First i install java then i install maven after that i install tomcat on top the tomcat server i deploy the jenkinswar file, then configure the jenkins, on top of tomcat server.
+Create one job here goto click on the add post build action once we done this configure we build the job means it will sent mail to recepient mail.
 
-https://www.howtoforge.com/tutorial/how-to-install-jenkins-with-apache-on-ubuntu-16-04/
+![email](https://github.com/malli2221/ops/blob/master/jen/jen11%202018-07-13%2017-57-05.png)
 
-2. Install any five plugin and use them.
+2. findbug, checkstyle,cobertura.
 
- pulgins : 1. green ball plugin
+For this first we need to install the plugins once install the pulgin create one maven job then their we need to pass the maven goals like findbug,checkstyle once pass this plugin it will generate the code analysis report like graph.
 
-        2.deploy to container
+What is the use of this plugin it will generate the code quality.
 
-                    3. git
+Cobetura: it is a plugin it is working has codequality means if we have 100 lines of code, we have to do the automation tesing those lines, using this pulgin we have check how many line was covered the automations tesing those kind of information we know.
 
-                    4.maven
+3.dsl-job .
 
-                     5.diskspace
+Today i leraned the maven job dsl .
 
-3. Install a plugin manually.
+def gitUrl = &#39;https://github.com/malli2221/mavenrepo.git&#39;
 
-I installed &quot;nexus platform plugin&quot; first go to internet and download the plugin and go to manage jenkins here select the advanced tab browse the hpi file and upload that.
+job(&#39;PROJ-unit-tests&#39;) {
 
-4.Create a freestyle job to print &quot;Hello world&quot;
+    scm {
 
- using helloworld program i created one job.using that git hub url i given in that job after that i build the job.
+        git(gitUrl, &#39;master&#39;)
 
-5.Create a job to clone your jenkins repo and cat a file from it.
+    }
 
- a. create new job in that job seclt copy from existing job option then save,it will clone the exsting job.
+    triggers {
 
-. List of the file inside directory.
+        scm(&#39;\*/2 \* \* \* \*&#39;)
 
- Workspace-helloworld-&gt; helloworld.java, README.md, text.
+    }
 
- i created one job like &quot;hello&quot; in this job using existing helloworld job clon e here
+    steps {
 
+        maven{
 
+           mavenInstallation(&#39;M2\_HOME&#39;)
 
+                  goals(&#39;clean&#39;)
 
+                  goals(&#39;compile&#39;)
 
+                }
 
+           }
 
-6. Increase and decrease number of executors and observe the build queue.
+}
 
-go to manage jenkins -&gt; go to configure system -&gt; build excutor (here we need to modified that excutor)
+![jen](https://github.com/malli2221/ops/blob/master/jen/jenkinst1%202018-07-13%2015-55-51.png)
 
-![build](https://github.com/malli2221/ops/blob/master/imgr/jenkins1%202018-07-11%2014-25-29.png)
+mavenJob(&#39;example&#39;) {
 
+    scm {
 
+        github(&#39;https://github.com/malli2221/mavenrepo.git&#39;, &#39;master&#39;)
 
+    }
 
+    triggers {
 
-7. unix based autuhentication pupose.
+        scm(&#39;\* \* \* \* \*&#39;)
 
-Go to manage jenkins -&gt; configure global security
+    }
 
-8. matrix based authentication= for this i created one user after that go to manage jenkins -&gt; go to configure global security -&gt; here i selected that matrix based authentication here i added the user.
+    goals(&#39;clean verify&#39;)
 
-9. project based matrix= go to configure global security -&gt; here select the &quot;jenkins  user own data base&quot; again we need to select the &quot;project based matrix autorization stratefy&quot;.
+}
 
-We created one new job configure the job at that time we need to select the &quot;enable project-based secutiry&quot;
+![jen]( [https://github.com/malli2221/ops/blob/master/jen/dsl1%202018-07-12%2017-24-25.png](https://github.com/malli2221/ops/blob/master/jen/dsl1%202018-07-12%2017-24-25.png))
 
+downstream job:
 
+project downstream:
 
+job(&#39;downstream&#39;)
 
+{
 
-10.role based user authentication and autharization = for this we need to install the plugin  &quot;role based authorization strategy&quot;  then go to user
+steps
 
-11. setup email notification.
+ {
 
+   downstreamParameterized
 
+ {
 
-12. integrate the slack to jenkins.
+  trigger(&#39;hello person&#39;)
 
- First we need to install slack notification plugin then. Then go to slack click on setting-&gt; click add apps-&gt; here we need to select the jenkins and click on addconfigure then system generate the token, then go to jenkins here here click on the system configure then we need to integrate the slack to jenkins using the token id, then check the connection it working or not need to check testconnection.
+{
 
-![slack](https://github.com/malli2221/ops/blob/master/imgr/jenkins%2022018-07-11%2015-13-08.png)
+            block
 
-13.Add a slave to your jenkins, restrict some of the job to your slave.
+{
 
-Go to manage jenkins-&gt; manage nodes click on the new node here we need to give remote directory , create lable name and remote machine ip address then save the setting and go to node  and lanuch the agent it will lanuch the connection, go to jenkins create new job and here we need to pass the slave jenkins lable name (lable-2)
+                buildStepFailure(&#39;FAILURE&#39;)
 
-![slave](https://github.com/malli2221/ops/blob/master/imgr/jenkins%2052018-07-11%2017-26-19.png)
+               failure(&#39;FAILURE&#39;)
 
-14. Install below plugins ?
+                unstable(&#39;UNSTABLE&#39;)
 
-            Maven integration plugin
+        }
 
-- Checkstyle Plug-in
-- FindBugs Plug-in
-- Static Analysis Collector Plug-in
-- Cobertura Plugin
+          parameters {
 
-15. Install below softwares under Global tool configuration?
+             predefinedProps([Salutation: &#39;Mr.&#39;, Name: &#39;arunkundrupu&#39;])
 
-   I installed maven and integrate to jenkins, i download jdk 8 then using export keyword set the environment.
+}
 
-Using apt-get install git install the git.
+       }
 
-16.Setup CodeStability Job?
+    }
 
- Here i choose the maven project using that i created one new job in jenkins here i pass the git url and pass maven goals has clean compile. I test that job.
+}
 
-I created the pom.xml
+upstream:
 
- &lt;project&gt;
+job(&#39;upstream&#39;)
 
-&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+{
 
-&lt;groupId&gt;com.jdevs&lt;/groupId&gt;
+triggers
 
-&lt;artifactId&gt;studentapp&lt;/artifactId&gt;
+ {
 
-&lt;version&gt;2.5-SNAPSHOT&lt;/version&gt;
+ upstream(&#39;parameterised-hello-person&#39;, &#39;SUCCESS&#39;)
 
-&lt;packaging&gt;war&lt;/packaging&gt;
+   }
 
-&lt;/project&gt;
+steps
 
- ipass this pom.xml using maven golas clean and compile.
+{
+
+   shell(&#39;echo &quot;This is downstream job&quot;&#39;)   }
+
+}
+
+pollscm:
+
+job(&#39;hello pol&#39;)
+
+ {
+
+scm {
+
+ git{
+
+   remote{   url(&#39;https://github.com/arunkundrupu1990/jenkins.git&#39;)   }   triggers {   scm(&#39;\*/2 \* \* \* \* &#39;)   }   steps {   shell(&#39;ls -la&#39;)   }
+
+ }
+
+}
+
+}
+
+Message Input
+
+job(&#39;ninja-jobs&#39;)
+
+{nestedView(&#39;simple-jobs&#39;)
+
+ {
+
+views
+
+{
+
+   listView(&#39;&quot;parameterized-hell world&quot;, &quot;hello person&quot;, &quot;git-jen-clone&quot;, &quot;trigger-periodical&quot;, &quot;hello pol&quot;&#39;)
+
+ {
+
+          columns
+
+{
+
+  status()
+
+   weather()
+
+     name()
+
+lastSuccess()
+
+     lastFailure()
+
+        }
+
+   }
+
+  }
+
+}
+
+  nestedView(&#39;coplex-jobs&#39;)
+
+ {
+
+views
+
+ {
+
+    listView(&#39;&quot;upstream&quot;, &quot;downstream&quot;&#39;)
+
+ {
+
+        columns
+
+ {
+
+       status()
+
+     weather()
+
+    name()
+
+        lastSuccess()
+
+     lastFailure()
+
+       }
+
+  }
+
+    }
+
+     }
+
+  }
