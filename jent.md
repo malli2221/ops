@@ -1,3 +1,115 @@
+mavenJob('BigParser_BE_websockets-Deploy_QA'){
+description('I ll do BE websockets continuous deployment of all components available in Bigparser_Backend')  
+
+  logRotator {
+       daysToKeep(60)
+       numToKeep(20)
+      Today : 19-7-2018
+
+dsl job : today i have to take one job in bigparser (BigParser\_BE\_websockets-Deploy\_QA) i created   job using groovy script.
+
+mavenJob(&#39;BigParser\_BE\_websockets-Deploy\_QA&#39;){
+
+description(&#39;I ll do BE websockets continuous deployment of all components available in Bigparser\_Backend&#39;)
+
+  logRotator {
+
+       daysToKeep(60)
+
+       numToKeep(20)
+
+    }
+
+  scm {
+
+   git {
+
+     remote {
+
+       url(&quot;git@github.com:BigParser/BigParser\_WebSockets\_Server\_BE.git&quot;)
+
+     }
+
+      branch(&quot;\*/master&quot;)
+
+   }
+
+ }
+
+  triggers {
+
+        scm(&#39;H/2 \* \* \* \*&#39;)
+
+    }
+
+  wrappers {
+
+    environmentVariables{
+
+    propertiesFile(&#39;/var/lib/jenkins/scripts/qa/email\_recipient&#39;)
+
+  }
+
+}
+
+  preBuildSteps{
+
+    shell{
+
+      command(&#39;bash /var/lib/jenkins/scripts/qa/qa\_tag\_details/tag\_details\_Websockets\_BE.sh&#39;)
+
+    }
+
+  }
+
+  goals(&#39;clean package&#39;)
+
+  postBuildSteps{
+
+    shell{
+
+      command(&#39;bash /var/lib/jenkins/scripts/qa/backend/qa\_backend\_websockets\_deploy.sh ${RELEASE\_ID}&#39;)
+
+    }
+
+  }
+
+  publishers{
+
+        extendedEmail {
+
+         recipientList(&#39;$BACKEND\_RECIPIENT&#39;)
+
+          replyToList(&#39;$DEFAULT\_REPLYTO&#39;)
+
+          contentType(&#39;text/html&#39;)
+
+          defaultSubject(&#39;$DEFAULT\_SUBJECT QA Environment&#39;)
+
+          defaultContent(&#39;${SCRIPT,template=&quot;qa-be-email-html.template&quot;} \nBackend Chatbot data deployed&#39;)
+
+          triggers {
+
+            always {
+
+              sendTo {
+
+                developers()
+
+                recipientList()
+
+              }
+
+            }
+
+          }
+
+        }
+
+}
+
+}
+
 Jenkins :
 
 Parametarized job :
@@ -72,4 +184,4 @@ publishers {
 
 }
 
-![find](https://github.com/malli2221/ops/blob/master/imgt/findbug%202018-07-17%2018-47-59.png)
+![find](https://github.com/malli2221/ops/blob/master/imgt/findbug%202018-07-17%2018-47-59.png) 
