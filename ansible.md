@@ -87,3 +87,73 @@ ansible all -b -m apt -a &#39;name=git state=absent&quot;
 ![an](https://github.com/malli2221/ops/blob/master/imgt/ansible3.png)
 
 ![an](https://github.com/malli2221/ops/blob/master/imgt/anisble4.png)
+1/8/2018 : 
+
+Today i worked on ansible playbooks i write a playbook for git intsallation and apache2 installation and nginx and java.
+
+Apache2 installation using ansible playbook.
+---
+- name : creating users and capturing username and  home dir
+  hosts : all
+  become : yes
+  tasks :
+   - name : install apache2
+     apt :
+        name : apache2
+        state : present
+   - name : starting apache service
+     service :
+       name : apache2
+       statei : started
+
+Using ansible create the directory:
+---
+- name : creating users and capturing username and  home dir
+  hosts : all
+  become : yes
+  tasks :
+   - name : install apache2
+     apt :
+        name : apache2
+        state : present
+   - name : starting apache service
+     service :
+         name : apache2
+       statei : started
+Using ansible playbook install the git.
+---
+- hosts : all
+  become : yes
+  tasks : 
+   - name : install git
+     apt : 
+       name : git
+        state : present
+
+
+Using ansible playbook install nginx;
+---
+- name : creating users and capturing username and  home dir
+  hosts : all
+  become : yes
+  tasks :
+   - name : install apache2
+     apt :
+        name : nginx
+        state : present
+   - name : starting apache service
+     service :
+       name : nginx
+       statei : started
+
+Using ansible playbook clone the git reposotory:
+ansible@vagrant-ubuntu-trusty-64:/opt/ansible$ cat clone.yml 
+---
+- hosts : all
+  become : yes
+  tasks : 
+   - name : git clone
+     git : 
+       repo : https://github.com/malli2221/ops.git
+       dest : /opt/ansible
+
